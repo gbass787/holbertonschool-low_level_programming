@@ -1,1 +1,26 @@
 readme debugging
+d
+e
+b
+u
+g
+g
+i
+n
+g
+r
+e
+a
+d
+m
+e
+t
+h
+i
+s
+i
+s
+h
+e
+l
+l

@@ -9,19 +9,20 @@
 
 void puts_half(char *str)
 {
-	int x, y, z;
+	int x = 0;
+	char *start = str;
 
-	for (x = 0; str[x] != '\0'; x++)
-		;
-	if ((x % 2) == 0)
+	while (*str)
 	{
-		for (y = x / 2; str[y] != '\0'; y++)
-			_putchar(str[y]);
+		x++;
+		str++;
 	}
-	else
+	x += 1;
+	start += x / 2;
+	while (*start)
 	{
-		for (z = (x - 1) / 2; str[z] != '\0'; z++)
-			_putchar(str[z + 1]);
+		_putchar(*(start));
+		start++;
 	}
 	_putchar('\n');
 }

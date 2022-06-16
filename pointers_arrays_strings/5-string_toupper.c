@@ -3,19 +3,19 @@
  * *string_toupper - changes all lowercase letters of
  * a string to uppercase
  *
- * @x: string
+ * @a: string
  *
  * Return: void
  */
 
-char *string_toupper(char *x)
+char *string_toupper(char *a)
 {
-	int y;
+	int x;
 
-	for (y = 0; x[y] != '\0'; y++)
+	for (x = 0; a[x] != '\0'; x++)
 	{
-		if (x[y] >= 'x' && x[y] <= 'z')
-			x[y] = x[y] - 32;
+		if (a[x] >= 'a' && a[x] <= 'z')
+			a[x] = a[x] - 32;
 	}
-	return (x);
+	return (a);
 }

@@ -11,7 +11,7 @@
 unsigned int _strspn(char *s, char *accept)
 {
 	int x;
-	unsigned int bts = 0;
+	unsigned int y = 0;
 
 	while (*s)
 	{
@@ -19,13 +19,13 @@ unsigned int _strspn(char *s, char *accept)
 		{
 			if (*s == accept[x])
 			{
-				bts++;
+				y++;
 				break;
 			}
-			else if (accept[x + x] == '\0')
-				return (bts);
+			else if (accept[x + 1] == '\0')
+				return (y);
 		}
 		s++;
 	}
-	return (bts);
+	return (y);
 }

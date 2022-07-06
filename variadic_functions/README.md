@@ -1,7 +1,1 @@
-README variadic functions
-r
-e
-a
-d
-m
-e
+# holbertonschool-low_level_programming

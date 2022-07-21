@@ -1,21 +1,21 @@
 #include "main.h"
 /**
- * set_bit - set value to 1 on index
+ * clear_bit - set value of a bit to 0
  *
  * @n: number
- * @index: index of number
+ * @index: number
  *
- * Return: 1 if it works, -1 otherwise
+ * Return: 1, -1 otherwise
  */
 
-int set_bit(unsigned long int *n, unsigned int index)
+int clear_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned long int set;
 
 	if (index > sizeof(unsigned long int) * 8)
 		return (-1);
 
-	set = 1 << index;
-	*n = *n | set;
+	set = ~(1 << index);
+	*n = *n & set;
 	return (1);
 }

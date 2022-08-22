@@ -1,43 +1,45 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 #include "hash_tables.h"
 
 /**
- * hash_table_set - adds an element tot the hash table
+ * hash_table_set - function add an element to the hash table
+ * @ht: the hash table you want to add or update the key/value to
+ * @key: the key, cannot be an empty string
+ * @value: the value associated with the key, value must be duplicated,
+ * value can be an empty string
+ * Return: 1 on sucess, 0 on fail
  *
- * @ht: hash table
- * @key: key
- * @value: value associated with key
- *
- * Return: 1 if it succeeds, 0 if otherwise
+ * Incase of collision, adds the new node at the beginning of the list
  */
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	char *dup_value;
+	hash_node_t *newNode = NULL;
+	char *key_copy, *value_copy;
 	unsigned long int index = 0;
-	hash_node_t *new;
 
-	if (strcmp(key, "") == 0)
+	if ((strcmp(key, "") == 0) || key == NULL || value == NULL || ht == NULL)
 		return (0);
 
-	dup_value = strdup(value);
-	if (dup_value == NULL)
-		return (0);
+	key_copy = strdup(key);
+	value_copy = strdup(value);
 
-	new = malloc(sizeof(hash_node_t));
-	if (new == NULL)
-		return (0);
+	newNode = malloc(sizeof(hash_node_t));
+		if (newNode == NULL)
+			return (0);
+	newNode->key = key_copy;
+	newNode->value = value_copy;
 
-	index = key_index((unsigned char *)key, ht->size);
-
-	new->key = (char *)key;
-	new->value = dup_value;
+	index = key_index((const unsigned char *)key, ht->size);
 
 	if (ht->array[index] == NULL)
-		new->next = NULL;
+		newNode->next = NULL;
 	else
-		new->next = ht->array[index];
+		newNode->next = ht->array[index];
 
-	ht->array[index] = new;
+	ht->array[index] = newNode;
 
 	return (1);
 }
